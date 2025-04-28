@@ -43,8 +43,10 @@ X_input = pd.DataFrame({
 }, dtype=np.float32)
 
 # --- Predictions ---
-duration_pred = round(model_durr.predict(X_input)[0], 2)
 distance_pred = round(model_dis.predict(X_input)[0], 2)
+X_input["distance_pred"] = distance_pred
+duration_pred = round(model_durr.predict(X_input)[0], 2)
+X_input["duration_pred"] = duration_pred
 fare_pred = round(model_fare.predict(X_input)[0], 2)
 
 # --- Display Results ---
@@ -52,4 +54,3 @@ st.subheader("Trip Predictions")
 st.write(f"🚕 **Predicted Duration**: {duration_pred:.2f} minutes")
 st.write(f"📏 **Predicted Distance**: {distance_pred:.2f} miles")
 st.write(f"💵 **Predicted Fare**: ${fare_pred:.2f}")
-
