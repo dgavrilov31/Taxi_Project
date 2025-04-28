@@ -1,8 +1,7 @@
-import joblib
 import numpy as np
+import joblib
 import streamlit as st
 
-# Load models and encoders
 model_durr = joblib.load("trip_duration_model.pkl")
 model_dis = joblib.load("trip_distance_model.pkl")
 model_fare = joblib.load("trip_fare_model.pkl")
