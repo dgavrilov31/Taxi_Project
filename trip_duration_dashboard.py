@@ -10,7 +10,7 @@ model_dis = joblib.load("trip_distance_model.pkl")
 model_fare = joblib.load("trip_fare_model.pkl")
 le_pickup = joblib.load("pickup_zone_encoder.pkl")
 le_dropoff = joblib.load("dropoff_zone_encoder.pkl")
-le_time = joblib.load("time_transformer.pkl")
+le_time = joblib.load("time_tranformer.pkl")
 
 # --- Sidebar Inputs ---
 st.sidebar.header("Input Trip Details")
