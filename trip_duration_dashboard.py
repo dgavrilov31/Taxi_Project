@@ -34,20 +34,19 @@ pickup_time_enc = le_time.transform([pickup_time_str])[0]
 day_of_week_numeric = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].index(day_of_week)
 
 # --- Prepare Input for Prediction ---
-X_input = pd.DataFrame({
-    'pickup_zone_enc': [pickup_enc],
-    'dropoff_zone_enc': [dropoff_enc],
-    'pick_up_time': [pickup_time_enc],
-    'day_of_week': [day_of_week_numeric],
-    'passenger_count': [passenger_count]
-}, dtype=np.float32)
+X = pd.DataFrame([{
+    "pickup_zone_enc":      pickup_enc,
+    "dropoff_zone_enc":     dropoff_enc,
+    "day_of_week_enc":      day_of_week,
+    "passenger_count_enc":  passenger_count,
+}])
 
 # --- Predictions ---
-distance_pred = round(model_dis.predict(X_input)[0], 2)
-X_input["distance_pred"] = distance_pred
-duration_pred = round(model_durr.predict(X_input)[0], 2)
-X_input["duration_pred"] = duration_pred
-fare_pred = round(model_fare.predict(X_input)[0], 2)
+distance_pred = round(model_dis.predict(X)[0], 2)
+X["distance_pred"] = distance_pred
+duration_pred = round(model_durr.predict(X)[0], 2)
+X["duration_pred"] = duration_pred
+fare_pred = round(model_fare.predict(X)[0], 2)
 
 # --- Display Results ---
 st.subheader("Trip Predictions")
