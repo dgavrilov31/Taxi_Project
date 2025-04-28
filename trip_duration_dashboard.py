@@ -32,9 +32,10 @@ pickup_time_str = pickup_time.strftime("%H:%M")  # Example: '08:00'
 pickup_time_enc = le_time.transform([pickup_time_str])[0]
 
 # Prepare input features for prediction
-X_input = np.array([[pickup_enc, dropoff_enc, pickup_time_enc, day_of_week_numeric, passenger_count]])
+X_input = np.array([[pickup_enc, dropoff_enc, pickup_time_enc, day_of_week_numeric, passenger_count]], dtype=np.float32)
 
 # --- Predictions ---
+
 # Trip Duration Prediction
 duration_pred = round(model_durr.predict(X_input)[0], 2)
 # Trip Distance Prediction
